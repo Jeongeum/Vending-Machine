@@ -1,0 +1,106 @@
+.ir{
+	display:block;
+	overflow:hidden;
+	Font-size:1px;
+	line-height:0;
+	text-indent:-9999px;
+}
+
+body {
+    background-color: #EAE8FE;
+}
+
+/* 레이아웃 */
+
+.logo {
+    text-align: center;
+    margin-bottom: 67px;
+}
+
+.logo img {
+    width: 386px;
+    height: 180px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 170px;
+    background-color: antiquewhite;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    margin: 44px 0 170px;
+    justify-content: space-between;
+}
+/* vending machine */
+.vending-machine {
+    width: 360px;
+    height: 545px;
+    background-color: lightcoral;
+}
+
+/* 음료 리스트 ul */
+.vending-machine .lists {
+    margin: 31px 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* 음료 각각 */
+.vending-machine .cola-item {
+    width: 94px;
+    height: 130px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* 음료 획득 과정 */
+.process-container {
+    display: grid;
+    grid-template-columns: 200px 94px;
+    grid-template-rows: repeat(2, 32px) 106px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.process-container .process-item {
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.process-container .get-list {
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+/* result */
+.main-result {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 360px;
+    height: 545px;
+    background-color: lightgreen;
+}
+
+/* 현재 소지금액 */
+.main-result .current-money {
+    width: 100%;
+    height: 50px;
+    background-color: lightgoldenrodyellow;
+}
+
+/* 음료 구매 리스트 */
+.main-result .result-drink {
+    width: 100%;
+    height: 100%;
+    background-color: lightgoldenrodyellow;
+}
+
