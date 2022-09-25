@@ -1,15 +1,46 @@
+:root {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
 .ir{
-	display:block;
-	overflow:hidden;
-	Font-size:1px;
-	line-height:0;
-	text-indent:-9999px;
+	position: absolute;
+    clip-path: inset(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: #EAE8FE;
-    font-family: 'Noto Sans KR', sans-serif;
 }
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+input {
+    border: none;
+}
+
+
+/* 공통 */
+
+.balance-money::after,
+.have-money::after {
+    content: '원';
+    display: inline-block;
+    margin-left: 5px;
+} 
 
 /* 레이아웃 */
 
@@ -28,7 +59,6 @@ body {
     flex-direction: row;
     justify-content: center;
     margin-bottom: 170px;
-    /* background-color: antiquewhite; */
     gap: 28px;
 }
 
@@ -41,81 +71,189 @@ body {
 
 /* vending machine */
 .vending-machine {
+    padding: 31px 27px 28px 27px;
+    box-sizing: border-box;
     width: 360px;
     height: 545px;
-    background-color: lightcoral;
+    background-color: #fff;
 }
 
 /* 음료 리스트 ul */
-.vending-machine .lists {
-    margin: 31px 0 20px;
-    display: flex;
-    flex-wrap: wrap;
+.drink-container {
+    display: grid;
+    grid-template-columns: repeat(3,94px);
+    grid-template-rows: repeat(2,1fr);
     justify-content: center;
-    gap: 12px;
+    grid-gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* 솔드아웃 */
+.drink-item .soldout::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-image: url("/images/품절.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #000;
+    opacity: 0.8;
 }
 
 /* 음료 각각 */
-.vending-machine .cola-item {
-    width: 94px;
+.drink-item {
     height: 130px;
-    border: 1px solid #000;
     border-radius: 10px;
-    text-align: center;
+    box-sizing: border-box;
+}
+
+.drink-item:hover {
+    outline: 3px solid #6327FE;
+}
+
+.drink-item-btn {
+    width: 100%;
+    height: 100%;
+    
+    padding: 11px 11px 9px 13px;
+    background-color: #fff;
+    border-radius: 10px;
+    font-size: 9px;
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
+}
+
+.drink-item-btn .item-btn-name {
+    display: block;
+    margin: 6px 0;
+} 
+
+.drink-item-btn .item-btn-amount {
+    display: block;
+    font-size: 12px;
+    padding: 5px 15px;
+    background-color: #6327FE;
+    color: #fff;
+    border-radius: 50px;
+}
+
+.item-btn-amount::after {
+    content: '원';
+    display: inline-block;
 }
 
 /* 음료 획득 과정 */
-.process-container {
+.form-container {
     display: grid;
     grid-template-columns: 200px 94px;
     grid-template-rows: repeat(2, 32px) 106px;
     gap: 10px;
     justify-content: center;
+    /* font-size: 13px;
+    font-weight: 500; */
 }
 
-.process-container .process-item {
-    border: 1px solid #000;
-    border-radius: 5px;
-}
-
-.process-container .get-list {
-    border: 1px solid #000;
-    border-radius: 5px;
-}
-
-/* result */
-.main-result {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 360px;
-    height: 545px;
-    /* background-color: lightgreen; */
-}
-
-/* 현재 소지금액 */
-.main-result .current-money {
-    width: 100%;
-    height: 50px;
-    background-color: #fff;
-}
-
-.current-money .money-box {
+/* 잔액 */
+.balance, .money-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    margin: 9px 27px;
     padding: 6px 10px;
     box-sizing: border-box;
     height: 32px;
     background-color: #EAE8FE;
+    border-radius: 5px;
+}
+
+.balance {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* 입금액 입력 input */
+.insert-price {
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+/* 거스름돈 반환 */
+.return-price, .insert-btn {
+    background-color: #fff;
+    padding: 6px 9px 7px 10px;
+    border-radius: 5px;
+    line-height: 1;
+    font-size: 13px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.get-btn {
+    background-color: #6327FE;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.get-list {
+    border-radius: 5px;
+    outline: 1px solid #BDBDBD;
+}
+
+.get-cart {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0 10px 10px;
+    box-sizing: border-box;
+    background-color: #EAE8FE;
+    border-radius: 5px;
+}
+
+.get-item {
+    display: flex;
+    align-items: center;
+    width: 170px;
+    background: #FFFFFF;
+    padding: 8px;
+    margin-bottom: 10px;border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 9px;
+}
+
+/* right section */
+.result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 360px;
+    height: 545px;
+    /* margin-top: -10px; */
+}
+
+/* 현재 소지금액 */
+.result-container .current-money {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+}
+
+.money-box {
+    width: 306px;
+    margin: 9px auto;
+    font-weight: 500;
 }
 
 
 /* 음료 구매 리스트 */
-.main-result .get-wrapper {
+.result-container .get-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -126,7 +264,7 @@ body {
     padding: 26px 27px;
 }
 
-.get-wrapper h2 {
+.get-wrapper h3 {
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 13px;
@@ -138,37 +276,14 @@ body {
     margin-top: 6px;
 }
 
-.get-cart {
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    /* width: 306px;
-    height: 364px; */
-    width: 100%;
-    padding: 10px 0 10px 10px;
-    box-sizing: border-box;
-    background-color: #EAE8FE;
-    outline: 1px solid #BDBDBD;
-    border-radius: 5px;
-}
-
 .get-cart.max {
     width: 306px;
     height: 364px;
 } 
 
 
-.get-cart .get-item {
-    display: flex;
-    align-items: center;
+.get-cart.max .get-item {
     width: 274px;
-    /* height: 46px; */
-    background: #FFFFFF;
-    padding: 8px;
-    margin-bottom: 10px;border-radius: 5px;
-    position: relative;
-    box-sizing: border-box;
 }
 
 .get-item img {
