@@ -106,7 +106,7 @@ input {
 
 /* 음료 각각 */
 .drink-item {
-    height: 130px;
+    /* height: 130px; */
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -132,12 +132,16 @@ input {
 } 
 
 .drink-item-btn .item-btn-amount {
-    display: block;
+    width: 70px;
+    height: 22px;
+    display: inline-block;
     font-size: 12px;
     padding: 5px 15px;
+    box-sizing: border-box;
     background-color: #6327FE;
     color: #fff;
     border-radius: 50px;
+    line-height: 1;
 }
 
 .item-btn-amount::after {
@@ -180,6 +184,7 @@ input {
     border: 1px solid #BDBDBD;
     border-radius: 5px;
     padding: 6px;
+    font-size: 13px;
 }
 
 /* 거스름돈 반환 */
