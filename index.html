@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Vending Machine</title>
@@ -62,9 +65,17 @@
                 <input class="process-item" type="text" placeholder="입금액 입력">
                 <button class="process-item">입금</button>
                 <div class="get-list process-item">
-                    <ul>
-                        <li>Original_Cola</li>
-                        <li>Green_Cola</li>
+                    <ul class="get-cart">
+                        <!-- <li class="get-item">
+                            <img src="./images/Original_Cola.png">
+                            <span class="item-name">Original_Cola</span>
+                            <span class="item-num">1</span>
+                        </li>
+                        <li class="get-item">
+                            <img src="./images/Original_Cola.png">
+                            <span class="item-name">Original_Cola</span>
+                            <span class="item-num">1</span>
+                        </li> -->
                     </ul>
                 </div>
                 <button class="process-item">획득</button>
@@ -72,11 +83,52 @@
         </section>
         <section class="main-result">
             <div class="current-money">
-                소지금
+                <div class="money-box">
+                    <p class="money-box-item">소지금:</p>
+                    <p>0원</p>
+                </div>
             </div>
-            <div class="result-drink">
-                음료개수
-            </div>
+            <section class="get-wrapper">
+                <h2>획득한 음료</h2>
+                <ul class="get-cart max">
+                    <li class="get-item">
+                        <img src="./images/Original_Cola.png">
+                        <span class="item-name">Original_Cola</span>
+                        <span class="item-num">1</span>
+                    </li>
+                    <li class="get-item">
+                        <img src="./images/Original_Cola.png">
+                        <span class="item-name">Original_Cola</span>
+                        <span class="item-num">1</span>
+                    </li>
+                    <li class="get-item">
+                        <img src="./images/Original_Cola.png">
+                        <span class="item-name">Original_Cola</span>
+                        <span class="item-num">1</span>
+                    </li>
+                    <li class="get-item">
+                        <img src="./images/Original_Cola.png">
+                        <span class="item-name">Original_Cola</span>
+                        <span class="item-num">1</span>
+                    </li>
+                    <li class="get-item">
+                        <img src="./images/Original_Cola.png">
+                        <span class="item-name">Original_Cola</span>
+                        <span class="item-num">1</span>
+                    </li>
+                    <li class="get-item">
+                        <img src="./images/Original_Cola.png">
+                        <span class="item-name">Original_Cola</span>
+                        <span class="item-num">1</span>
+                    </li>
+                    <li class="get-item">
+                        <img src="./images/Original_Cola.png">
+                        <span class="item-name">Original_Cola</span>
+                        <span class="item-num">1</span>
+                    </li>
+                </ul>
+                <span class="get-total">총금액:0원</span>
+            </section>
         </section>
 
     </div>
