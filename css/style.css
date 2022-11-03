@@ -25,7 +25,7 @@ button {
     border: none;
     cursor: pointer;
     font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
+    /* font-weight: 500; */
 }
 
 input {
@@ -51,57 +51,44 @@ input {
 
 .logo img {
     width: 386px;
-    height: 180px;
 }
 
 .wrapper {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin-bottom: 170px;
-    gap: 28px;
-}
-
-.main {
-    display: flex;
-    flex-direction: row;
-    margin: 44px 0 170px;
-    justify-content: space-between;
+    flex-wrap: wrap; /* 화면 크기에 따라 알아서 밑으로 떨어지도록 */
+    gap: 0 28px;
 }
 
 /* vending machine */
 .vending-machine {
-    padding: 31px 27px 28px 27px;
+    padding: 31px 27px 28px;
     box-sizing: border-box;
-    width: 360px;
-    height: 545px;
+    /* width: 360px;
+    height: 545px; */
     background-color: #fff;
 }
 
 /* 음료 리스트 ul */
 .drink-container {
     display: grid;
-    grid-template-columns: repeat(3,94px);
-    grid-template-rows: repeat(2,1fr);
-    justify-content: center;
-    grid-gap: 12px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 /* 솔드아웃 */
 .soldout::before {
-    content: ' ';
+    display: block;
+    content: '';
     position: absolute;
     top: 0;
+    right: 0;
     left: 0;
-    width: 100%;
-    height: 130px;
+    bottom: 0;
+    z-index: 1;
     border-radius: 10px;
-    background-image: url("../images/품절.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #000;
-    opacity: 0.8;
+    background: no-repeat center/60px 46px url("../images/Sold-out.png") rgba(0,0,0,0.8);
 }
 
 /* 음료 각각 */
@@ -115,9 +102,10 @@ input {
     font-size: 9px;
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
     box-sizing: border-box;
+    cursor: pointer;
 }
 
-.drink-item:hover {
+.drink-item:active {
     outline: 3px solid #6327FE;
 }
 
@@ -325,3 +313,21 @@ input {
 .get-cart::-webkit-scrollbar-track {
     background: #EAE8FE;
   }
+
+
+
+/* 미디어 쿼리 */
+
+@media only screen and (min-width: 320px) and (max-width:480px) {
+    body {
+        background-color: #fff;
+    }
+
+    .logo {
+        margin-bottom: 25px;
+    }
+
+    .logo img {
+        width: 166px;
+    }
+}
