@@ -70,64 +70,71 @@ input {
 }
 
 /* 음료 리스트 ul */
-.drink-container {
+.drink-list {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 12px;
     margin-bottom: 20px;
 }
 
+/* 음료 각각 */
+.drink-list li {
+    position: relative;
+    border-radius: 10px;
+    font-size: 9px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+}
+
 /* 솔드아웃 */
-.soldout::before {
+.drink-list li.soldout::before {
     display: block;
-    content: '';
     position: absolute;
+    content: '';
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     z-index: 1;
     border-radius: 10px;
-    background: no-repeat center/60px 46px url("../images/Sold-out.png") rgba(0,0,0,0.8);
+    background: no-repeat center/60px 46px url(../images/품절.png) rgba(0,0,0,0.8);
 }
 
-/* 음료 각각 */
-.drink-item {
+.drink-list li.soldout {
+    pointer-events: none;
+}
+
+.vending-machine .get-item-btn {
     width: 100%;
-    height: 130px;
-    padding: 11px 11px 9px 13px;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 10px;
-    font-size: 9px;
-    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
-    box-sizing: border-box;
-    cursor: pointer;
+    padding: 11px 12px 9px;
 }
 
-.drink-item:active {
+.drink-list .get-item-btn:active {
+    border-radius: 10px;
     outline: 3px solid #6327FE;
 }
 
-.drink-item .item-btn-name {
+.get-item-btn img {
+    width: 36px;
+    height: 65px;
+    margin: 0 auto;
+}
+
+.get-item-btn .tit-item {
     display: block;
     margin: 6px 0;
+    font-size: 9px;
 } 
 
-.drink-item .item-btn-amount {
-    width: 70px;
-    height: 22px;
-    display: inline-block;
+.get-item-btn .txt-price {
+    display: block;
     font-size: 12px;
     padding: 5px 15px;
-    box-sizing: border-box;
     background-color: #6327FE;
     color: #fff;
     border-radius: 50px;
-    line-height: 1;
 }
 
-.item-btn-amount::after {
+.txt-price::after {
     content: '원';
     display: inline-block;
 }
@@ -163,7 +170,7 @@ input {
 }
 
 /* 입금액 입력 input */
-.insert-price {
+.insert-inp {
     border: 1px solid #BDBDBD;
     border-radius: 5px;
     padding: 6px;
@@ -171,27 +178,23 @@ input {
 }
 
 /* 거스름돈 반환 */
-.return-price, .insert-btn {
+.return-btn, 
+.insert-btn, 
+.get-btn {
     background-color: #fff;
     padding: 6px 9px 7px 10px;
     border-radius: 5px;
     line-height: 1;
     font-size: 13px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
 }
 
 .get-btn {
     background-color: #6327FE;
     color: #fff;
-    border-radius: 5px;
 }
 
-.get-list {
-    border-radius: 5px;
-    outline: 1px solid #BDBDBD;
-}
-
-.get-cart {
+.get-cart-list {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
@@ -202,6 +205,7 @@ input {
     box-sizing: border-box;
     background-color: #EAE8FE;
     border-radius: 5px;
+    outline: 1px solid #BDBDBD;
 }
 
 .get-item {
@@ -214,63 +218,6 @@ input {
     position: relative;
     box-sizing: border-box;
     font-size: 9px;
-}
-
-/* right section */
-.result-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 360px;
-    height: 545px;
-    /* margin-top: -10px; */
-}
-/* 현재 소지금액 */
-.result-container .current-money {
-    width: 100%;
-    height: 50px;
-    background-color: #fff;
-}
-
-.money-box {
-    width: 306px;
-    margin: 9px auto;
-    font-weight: 500;
-}
-
-
-/* 음료 구매 리스트 */
-.result-container .get-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: #fff;
-    box-sizing: border-box;
-    padding: 26px 27px;
-}
-
-.get-wrapper h3 {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 13px;
-}
-
-.get-wrapper .get-total {
-    font-size: 12px;
-    text-align: right;
-    margin-top: 6px;
-}
-
-.get-cart.max {
-    width: 306px;
-    height: 364px;
-} 
-
-
-.get-cart.max .get-item {
-    width: 274px;
 }
 
 .get-item img {
@@ -297,20 +244,75 @@ input {
     font-weight: 500;
 }
 
+/* right section */
+.my-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 360px;
+    height: 545px;
+    /* margin-top: -10px; */
+}
+/* 현재 소지금액 */
+.my-info .current-money {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+}
+
+.money-box {
+    width: 306px;
+    margin: 9px auto;
+    font-weight: 500;
+}
+
+
+/* 음료 구매 리스트 */
+.my-info .my-current-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 26px 27px;
+}
+
+.my-current-item .tit-my-item {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+
+.my-current-item .get-cart-list {
+    width: 306px;
+    height: 364px;
+}
+
+.my-current-item .get-cart-list .get-item {
+    width: 274px;
+}
+
+.my-current-item .get-total {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 6px;
+}
 /* 스크롤 커스텀 */
-.get-cart::-webkit-scrollbar {
+.get-cart-list::-webkit-scrollbar {
     width: 10px;
     
 }
 
-.get-cart::-webkit-scrollbar-thumb {
+.get-cart-list::-webkit-scrollbar-thumb {
     background: #FFFFFF;
     border-radius: 50px;
     border: 3px solid transparent;
     background-clip: padding-box;
 }
 
-.get-cart::-webkit-scrollbar-track {
+.get-cart-list::-webkit-scrollbar-track {
     background: #EAE8FE;
   }
 
