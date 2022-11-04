@@ -17,9 +17,6 @@ ul {
     padding: 0;
 }
 
-body {
-    background-color: #EAE8FE;
-}
 
 button {
     border: none;
@@ -33,16 +30,11 @@ input {
 }
 
 
-/* 공통 */
-
-.balance-money::after,
-.have-money::after {
-    content: '원';
-    display: inline-block;
-    margin-left: 5px;
-} 
-
 /* 레이아웃 */
+
+body {
+    background-color: #EAE8FE;
+}
 
 .logo {
     text-align: center;
@@ -53,12 +45,18 @@ input {
     width: 386px;
 }
 
-.wrapper {
+#wrapper {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; /* 화면 크기에 따라 알아서 밑으로 떨어지도록 */
     gap: 0 28px;
 }
+
+#wrapper .vending-machine,
+#wrapper .my-info {    
+    flex-basis: 360px;
+}
+
 
 /* vending machine */
 .vending-machine {
@@ -77,7 +75,7 @@ input {
     margin-bottom: 20px;
 }
 
-/* 음료 각각 */
+/* 음료 각각 li */
 .drink-list li {
     position: relative;
     border-radius: 10px;
@@ -103,6 +101,7 @@ input {
     pointer-events: none;
 }
 
+/* 음료 button */
 .vending-machine .get-item-btn {
     width: 100%;
     padding: 11px 12px 9px;
@@ -134,62 +133,52 @@ input {
     border-radius: 50px;
 }
 
-.txt-price::after {
-    content: '원';
-    display: inline-block;
-}
-
 /* 음료 획득 과정 */
-.form-container {
+.vending-machine .buy-container {
     display: grid;
-    grid-template-columns: 200px 94px;
-    grid-template-rows: repeat(2, 32px) 106px;
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
     justify-content: center;
-    /* font-size: 13px;
-    font-weight: 500; */
 }
 
-/* 잔액 */
+.buy-container .balance,
+.buy-container .insert-inp,
+.buy-container .get-cart-list {
+    grid-column: 1/3;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.buy-container .return-btn,
+.buy-container .insert-btn,
+.buy-container .get-btn {
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+    font-size: 13px;
+}
+
+/* 잔액, 소지금 공통 스타일 */
 .balance, .money-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     padding: 6px 10px;
-    box-sizing: border-box;
     height: 32px;
     background-color: #EAE8FE;
-    border-radius: 5px;
 }
 
-.balance {
-    font-weight: 500;
+.buy-container .balance {
     font-size: 14px;
 }
 
 /* 입금액 입력 input */
 .insert-inp {
     border: 1px solid #BDBDBD;
-    border-radius: 5px;
     padding: 6px;
-    font-size: 13px;
 }
 
-/* 거스름돈 반환 */
-.return-btn, 
-.insert-btn, 
-.get-btn {
-    background-color: #fff;
-    padding: 6px 9px 7px 10px;
-    border-radius: 5px;
-    line-height: 1;
-    font-size: 13px;
-    box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
-}
-
-.get-btn {
+.buy-container .get-btn {
     background-color: #6327FE;
     color: #fff;
 }
@@ -197,14 +186,10 @@ input {
 .get-cart-list {
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    height: 106px;
+    padding: 12px;
     overflow-y: scroll;
-    width: 100%;
-    height: 100%;
-    padding: 10px 0 10px 10px;
-    box-sizing: border-box;
     background-color: #EAE8FE;
-    border-radius: 5px;
     outline: 1px solid #BDBDBD;
 }
 
@@ -212,11 +197,11 @@ input {
     display: flex;
     align-items: center;
     width: 170px;
-    background: #FFFFFF;
+    background: #fff;
     padding: 8px;
-    margin-bottom: 10px;border-radius: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
     position: relative;
-    box-sizing: border-box;
     font-size: 9px;
 }
 
@@ -227,7 +212,6 @@ input {
 
 .get-item .item-name {
     margin-left: 10px;
-    width: 73px;
 
 }
 
@@ -241,7 +225,6 @@ input {
     border-radius: 5px;
     line-height: 30px;
     font-size: 14px;
-    font-weight: 500;
 }
 
 /* right section */
@@ -260,9 +243,10 @@ input {
     background-color: #fff;
 }
 
-.money-box {
+.my-info .money-box {
     width: 306px;
     margin: 9px auto;
+    border-radius: 5px;
     font-weight: 500;
 }
 
@@ -299,6 +283,7 @@ input {
     text-align: right;
     margin-top: 6px;
 }
+
 /* 스크롤 커스텀 */
 .get-cart-list::-webkit-scrollbar {
     width: 10px;
